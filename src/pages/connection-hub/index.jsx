@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Header from '../../components/ui/Header';
 import TabNavigation from '../../components/ui/TabNavigation';
+import Footer from '../../components/ui/Footer';
 import FilterSidebar from '../../components/ui/FilterSidebar';
 import ProfileModal from '../../components/ui/ProfileModal';
 import DirectoryTable from './components/DirectoryTable';
@@ -10,7 +11,7 @@ import FilterChips from './components/FilterChips';
 import ViewToggle from './components/ViewToggle';
 import ResultsHeader from './components/ResultsHeader';
 import Pagination from './components/Pagination';
-
+import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 
 const ConnectionHub = () => {
@@ -383,6 +384,14 @@ const ConnectionHub = () => {
     // Implement messaging logic
   };
 
+  const handleEmail = (userEmail, userName) => {
+    if (userEmail) {
+      const subject = encodeURIComponent(`OneDigital Intern Connect - Hello from the Directory`);
+      const body = encodeURIComponent(`Hi ${userName},\n\nI found your profile in the OneDigital Intern Connect directory and would love to connect!\n\nBest regards`);
+      window.location.href = `mailto:${userEmail}?subject=${subject}&body=${body}`;
+    }
+  };
+
   const handleViewProfile = (userId) => {
     console.log('View full profile:', userId);
     // Navigate to full profile page
@@ -408,7 +417,7 @@ const ConnectionHub = () => {
   }, [isMobile, currentView]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
       <Header />
       <TabNavigation />
       
@@ -424,15 +433,33 @@ const ConnectionHub = () => {
         />
 
         {/* Main Content */}
-        <main className="flex-1 p-6 max-w-7xl mx-auto">
+        <main className="flex-1 p-6 pt-32 md:pt-36 max-w-7xl mx-auto">
           {/* Page Header */}
-          <div className="mb-6">
+          <div className="mb-8">
+            <div className="onedigital-header rounded-2xl p-8 text-white shadow-onedigital-lg relative overflow-hidden mb-6">
+              {/* Background decorative elements */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white bg-opacity-5 rounded-full translate-y-12 -translate-x-12"></div>
+              <div className="relative z-10">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <h1 className="text-3xl font-bold mb-2">🌐 OneDigital Directory</h1>
+                    <p className="text-white text-opacity-90 text-lg">
+                      Connect with colleagues, mentors, and fellow interns across OneDigital
+                    </p>
+                  </div>
+                  <div className="hidden md:block relative mt-4 sm:mt-0">
+                    <div className="w-20 h-20 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white border-opacity-20 shadow-lg">
+                      <Icon name="Users" size={36} color="white" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
               <div>
-                <h1 className="text-2xl font-bold text-text-primary mb-2">Connection Hub</h1>
-                <p className="text-text-secondary">
-                  Discover mentors, alumni, and peers to expand your professional network
-                </p>
+                <h2 className="text-lg font-semibold text-gray-700">Browse Directory</h2>
+                <p className="text-sm text-gray-500">Find the perfect connections for your career journey</p>
               </div>
               
               <div className="flex items-center space-x-3 mt-4 sm:mt-0">
@@ -494,6 +521,7 @@ const ConnectionHub = () => {
               <DirectoryTable
                 users={paginatedUsers}
                 onUserClick={handleUserClick}
+                onEmail={handleEmail}
                 sortConfig={sortConfig}
                 onSort={handleSort}
                 searchTerm={searchTerm}
@@ -502,6 +530,7 @@ const ConnectionHub = () => {
               <DirectoryCards
                 users={paginatedUsers}
                 onUserClick={handleUserClick}
+                onEmail={handleEmail}
                 searchTerm={searchTerm}
               />
             )}
@@ -526,6 +555,7 @@ const ConnectionHub = () => {
         onClose={() => setIsProfileModalOpen(false)}
         onConnect={handleConnect}
         onMessage={handleMessage}
+        onEmail={handleEmail}
         onViewProfile={handleViewProfile}
       />
 
@@ -538,6 +568,8 @@ const ConnectionHub = () => {
         filterConfig={filterConfig}
         className="md:hidden"
       />
+      
+      <Footer />
     </div>
   );
 };

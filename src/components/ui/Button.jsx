@@ -20,7 +20,7 @@ const Button = React.forwardRef(({
     ...rest
 }, ref) => {
     // Base classes
-    const baseClasses = 'inline-flex items-center justify-center transition-all duration-200 font-medium focus:ring-2 focus:outline-none';
+    const baseClasses = 'inline-flex items-center justify-center transition-all duration-200 font-medium focus:ring-2 focus:outline-none shadow-sm hover:shadow-md';
 
     // Size classes
     const sizeClasses = {
@@ -35,7 +35,7 @@ const Button = React.forwardRef(({
 
     // Shape classes
     const shapeClasses = {
-        rounded: 'rounded',
+        rounded: 'rounded-lg',
         square: 'rounded-none',
         pill: 'rounded-full',
         circle: 'rounded-full aspect-square',
@@ -43,16 +43,16 @@ const Button = React.forwardRef(({
 
     // Variant classes
     const variantClasses = {
-        primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
-        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        success: 'bg-success text-white hover:bg-opacity-90 active:bg-opacity-100 disabled:opacity-50',
-        danger: 'bg-error text-white hover:bg-opacity-90 active:bg-opacity-100 disabled:opacity-50',
-        warning: 'bg-warning text-primary-foreground hover:bg-opacity-90 active:bg-opacity-100 disabled:opacity-50',
-        info: 'bg-accent text-white hover:bg-opacity-90 active:bg-opacity-100 disabled:opacity-50',
-        ghost: 'hover:bg-primary hover:text-primary-foreground',
-        link: 'bg-transparent text-primary-foreground underline hover:text-primary-600 p-0',
-        outline: 'border border-input bg-background hover:bg-primary hover:text-primary-foreground',
-        text: 'bg-transparent text-primary-foreground hover:bg-surface hover:bg-opacity-50 active:bg-surface active:bg-opacity-70',
+        primary: 'bg-gradient-to-r from-[rgb(44,104,142)] to-[rgb(108,178,202)] text-white hover:shadow-lg hover:shadow-[rgb(44,104,142)]/25 hover:-translate-y-0.5',
+        secondary: 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 hover:border-gray-400',
+        success: 'bg-gradient-to-r from-[rgb(103,157,78)] to-[rgb(178,193,74)] text-white hover:shadow-lg hover:shadow-[rgb(103,157,78)]/25 hover:-translate-y-0.5',
+        accent: 'bg-gradient-to-r from-[rgb(226,110,56)] to-[rgb(246,198,69)] text-white hover:shadow-lg hover:shadow-[rgb(226,110,56)]/25 hover:-translate-y-0.5',
+        info: 'bg-gradient-to-r from-[rgb(44,104,142)] to-[rgb(108,178,202)] text-white hover:shadow-lg hover:shadow-[rgb(44,104,142)]/25 hover:-translate-y-0.5',
+        danger: 'bg-gradient-to-r from-red-500 to-red-600 text-white hover:shadow-lg hover:shadow-red-500/25 hover:-translate-y-0.5',
+        warning: 'gradient-accent text-white hover:shadow-lg hover:shadow-orange-500/25 hover:-translate-y-0.5',
+        outline: 'border-2 border-blue-600 text-blue-600 bg-white hover:bg-blue-50 hover:border-blue-700 hover:text-blue-700',
+        ghost: 'text-gray-600 hover:text-gray-900 hover:bg-gray-100',
+        text: 'text-blue-600 hover:text-blue-700 hover:bg-blue-50'
     };
 
 

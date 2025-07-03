@@ -81,7 +81,7 @@ const ProgressMetrics = ({ metrics }) => {
   };
 
   return (
-    <div className="bg-surface border border-border rounded-xl p-6 shadow-elevation-1">
+    <div className="bg-gradient-card border border-border-light rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm">
       <div className="flex items-center space-x-3 mb-6">
         <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
           <Icon name="TrendingUp" size={20} color="var(--color-primary)" />
@@ -98,7 +98,7 @@ const ProgressMetrics = ({ metrics }) => {
           const colors = getColorClasses(metric.color);
           
           return (
-            <div key={index} className="bg-surface-secondary rounded-lg p-4">
+            <div key={index} className="bg-white bg-opacity-60 rounded-xl p-4 border border-white border-opacity-50 backdrop-blur-sm hover:bg-opacity-80 transition-all duration-200">
               <div className="flex items-center justify-between mb-2">
                 <div className={`w-8 h-8 ${colors.bg} rounded-lg flex items-center justify-center`}>
                   <Icon name={metric.icon} size={16} color={colors.icon} />

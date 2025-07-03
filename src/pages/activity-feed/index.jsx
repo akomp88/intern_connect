@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
 import TabNavigation from '../../components/ui/TabNavigation';
+import Footer from '../../components/ui/Footer';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 import FilterSidebar from './components/FilterSidebar';
@@ -289,6 +290,11 @@ const ActivityFeed = () => {
 
   const hasActiveFilters = getActiveFilterCount() > 0;
 
+  const handleDirectMessage = (authorId, authorName) => {
+    console.log(`Starting direct message with ${authorName} (ID: ${authorId})`);
+    // In a real app, this would open a DM modal or navigate to messages
+  };
+
   return (
     <>
       <Helmet>
@@ -296,11 +302,11 @@ const ActivityFeed = () => {
         <meta name="description" content="Discover peer accomplishments, engage through reactions and comments, and stay connected with program activities." />
       </Helmet>
 
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
         <Header />
         <TabNavigation />
         
-        <div className="flex">
+        <div className="flex pt-24 md:pt-32">
           {/* Filter Sidebar */}
           <FilterSidebar
             isOpen={isFilterSidebarOpen}
@@ -309,21 +315,47 @@ const ActivityFeed = () => {
             onFiltersChange={handleFiltersChange}
           />
 
-          {/* Main Content */}
+          {/* Main Content - Made wider */}
           <div className="flex-1 min-w-0">
-            <div className="max-w-2xl mx-auto px-4 py-6">
+            <div className="max-w-5xl mx-auto px-4 py-8">
+              {/* Enhanced Header Section */}
+              <div className="bg-gradient-to-r from-[rgb(44,104,142)] to-[rgb(108,178,202)] rounded-2xl p-8 text-white shadow-lg mb-8 relative overflow-hidden">
+                {/* Background decorative elements */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white bg-opacity-5 rounded-full translate-y-12 -translate-x-12"></div>
+                
+                <div className="relative z-10">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-2 mb-3">
+                        <span className="text-2xl">🚀</span>
+                        <h1 className="text-3xl font-bold">Activity Feed</h1>
+                      </div>
+                      <p className="text-white text-opacity-90 text-lg">
+                        Discover what your fellow interns are accomplishing and celebrate their wins!
+                      </p>
+                    </div>
+                    
+                    <div className="hidden md:block relative mt-6 sm:mt-0">
+                      <div className="w-24 h-24 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white border-opacity-20 shadow-lg">
+                        <Icon name="Activity" size={40} color="white" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Header Actions */}
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center space-x-4">
-                  <h1 className="text-2xl font-bold text-text-primary">Activity Feed</h1>
                   {hasActiveFilters && (
-                    <span className="px-3 py-1 bg-primary-100 text-primary text-sm font-medium rounded-full">
+                    <span className="px-4 py-2 bg-gradient-to-r from-[rgb(44,104,142)] to-[rgb(108,178,202)] text-white text-sm font-medium rounded-full shadow-lg">
                       {getActiveFilterCount()} {getActiveFilterCount() === 1 ? 'filter' : 'filters'} active
                     </span>
                   )}
                 </div>
 
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-3">
                   {/* Filter Toggle */}
                   <Button
                     variant="outline"
@@ -335,7 +367,7 @@ const ActivityFeed = () => {
                   >
                     Filters
                     {hasActiveFilters && (
-                      <span className="ml-2 px-2 py-0.5 bg-primary text-primary-foreground text-xs rounded-full">
+                      <span className="ml-2 px-2 py-0.5 bg-[rgb(44,104,142)] text-white text-xs rounded-full">
                         {getActiveFilterCount()}
                       </span>
                     )}
@@ -347,6 +379,7 @@ const ActivityFeed = () => {
                     size="sm"
                     onClick={() => window.location.reload()}
                     iconName="RefreshCw"
+                    className="hover:bg-gradient-to-r hover:from-[rgb(44,104,142)] hover:to-[rgb(108,178,202)] hover:text-white transition-all duration-300"
                   >
                     <span className="hidden sm:inline ml-2">Refresh</span>
                   </Button>
@@ -380,27 +413,28 @@ const ActivityFeed = () => {
               ) : (
                 <>
                   {/* Activities List */}
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     {filteredActivities.map((activity) => (
                       <ActivityCard
                         key={activity.id}
                         activity={activity}
                         onReaction={handleReaction}
                         onComment={handleComment}
+                        onDirectMessage={handleDirectMessage}
                       />
                     ))}
                   </div>
 
                   {/* Load More */}
                   {loading && activities.length > 0 && (
-                    <div className="mt-6">
+                    <div className="mt-8">
                       <LoadingSkeleton count={2} />
                     </div>
                   )}
 
                   {!hasMore && filteredActivities.length > 0 && (
-                    <div className="text-center py-8">
-                      <div className="inline-flex items-center space-x-2 text-text-muted">
+                    <div className="text-center py-12">
+                      <div className="inline-flex items-center space-x-2 text-gray-500 bg-white rounded-full px-6 py-3 shadow-lg">
                         <Icon name="CheckCircle" size={16} />
                         <span className="text-sm">You've reached the end of the feed</span>
                       </div>
@@ -411,6 +445,8 @@ const ActivityFeed = () => {
             </div>
           </div>
         </div>
+        
+        <Footer />
       </div>
     </>
   );

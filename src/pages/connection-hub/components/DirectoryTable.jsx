@@ -6,6 +6,7 @@ import Image from '../../../components/AppImage';
 const DirectoryTable = ({ 
   users, 
   onUserClick, 
+  onEmail,
   sortConfig, 
   onSort, 
   searchTerm,
@@ -46,6 +47,13 @@ const DirectoryTable = ({
       return `${role} (Former Intern)`;
     }
     return role;
+  };
+
+  const handleEmailClick = (e, user) => {
+    e.stopPropagation();
+    if (onEmail && user.email) {
+      onEmail(user.email, user.name);
+    }
   };
 
   return (
@@ -196,9 +204,23 @@ const DirectoryTable = ({
                         onUserClick(user);
                       }}
                       className="opacity-0 group-hover:opacity-100 transition-opacity duration-150"
+                      title="View profile"
                     >
                       <Icon name="Eye" size={16} />
                     </Button>
+                    
+                    {user.email && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={(e) => handleEmailClick(e, user)}
+                        className="opacity-0 group-hover:opacity-100 transition-opacity duration-150 hover:bg-gradient-to-r hover:from-[rgb(103,157,78)] hover:to-[rgb(178,193,74)] hover:text-white"
+                        title="Send email"
+                      >
+                        <Icon name="Mail" size={16} />
+                      </Button>
+                    )}
+                    
                     <Button
                       variant="ghost"
                       size="sm"
@@ -207,6 +229,7 @@ const DirectoryTable = ({
                         console.log('Message user:', user.id);
                       }}
                       className="opacity-0 group-hover:opacity-100 transition-opacity duration-150"
+                      title="Send message"
                     >
                       <Icon name="MessageCircle" size={16} />
                     </Button>

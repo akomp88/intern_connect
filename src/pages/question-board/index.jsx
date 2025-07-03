@@ -379,7 +379,7 @@ const QuestionBoard = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
         <Helmet>
           <title>Question Board - Intern Connect</title>
           <meta name="description" content="Ask questions and get answers from peers and mentors" />
@@ -398,7 +398,7 @@ const QuestionBoard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       <Helmet>
         <title>Question Board - Intern Connect</title>
         <meta name="description" content="Ask questions and get answers from peers and mentors in your internship program" />
@@ -407,7 +407,7 @@ const QuestionBoard = () => {
       <Header />
       <TabNavigation />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pt-24 md:pt-32">
         {/* Page Header */}
         <div className="mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">

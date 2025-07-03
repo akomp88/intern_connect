@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/ui/Header';
 import TabNavigation from '../../components/ui/TabNavigation';
+import Footer from '../../components/ui/Footer';
 import QuickActionCard from './components/QuickActionCard';
 import WeeklyAccomplishmentForm from './components/WeeklyAccomplishmentForm';
 import ActivityFeedCard from './components/ActivityFeedCard';
@@ -208,26 +209,46 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
       <Header />
       <TabNavigation />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-32 md:pt-36">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-8">
-            {/* Welcome Section */}
-            <div className="bg-gradient-primary rounded-xl p-6 text-white">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h1 className="text-2xl font-bold mb-2">Welcome back, John! 👋</h1>
-                  <p className="text-white text-opacity-90">
-                    Ready to log your weekly accomplishments and connect with your peers?
-                  </p>
-                </div>
-                <div className="hidden md:block">
-                  <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                    <Icon name="TrendingUp" size={32} color="white" />
+            {/* OneDigital Welcome Section */}
+            <div className="onedigital-header rounded-2xl p-8 text-white shadow-onedigital-lg relative overflow-hidden">
+              {/* Background decorative elements with OneDigital theme */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white bg-opacity-5 rounded-full translate-y-12 -translate-x-12"></div>
+              
+              <div className="relative z-10">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-2 mb-3">
+                      <span className="text-2xl">👋</span>
+                      <h1 className="text-3xl font-bold">Welcome to OneDigital</h1>
+                    </div>
+                    <p className="text-white text-opacity-90 text-lg mb-4">
+                      Hello John! Ready to make an impact in your internship journey?
+                    </p>
+                    <div className="flex flex-wrap gap-4 text-sm text-white text-opacity-80">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                        <span>Software Engineering Intern</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                        <span>Week 8 of 12</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="hidden md:block relative mt-6 sm:mt-0">
+                    <div className="w-24 h-24 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white border-opacity-20 shadow-lg">
+                      <Icon name="Sparkles" size={40} color="white" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -247,7 +268,7 @@ const Dashboard = () => {
                   title="View My PDF Archive"
                   description="Access and download your previous weekly reports"
                   icon="FileText"
-                  variant="secondary"
+                  variant="success"
                   onClick={() => handleQuickAction('view-archive')}
                 />
                 <QuickActionCard
@@ -359,6 +380,8 @@ const Dashboard = () => {
 
       {/* Mobile Bottom Spacing */}
       <div className="h-20 md:hidden" />
+
+      <Footer />
     </div>
   );
 };

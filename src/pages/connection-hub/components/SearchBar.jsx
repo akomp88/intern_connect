@@ -99,8 +99,8 @@ const SearchBar = ({
           onChange={handleInputChange}
           onFocus={handleInputFocus}
           onKeyDown={handleKeyDown}
-          className={`pl-10 pr-10 transition-all duration-200 ${
-            isFocused ? 'ring-2 ring-primary ring-opacity-20 border-primary' : ''
+          className={`pl-10 pr-10 h-12 bg-gradient-to-r from-white to-blue-50 border-2 border-blue-200 rounded-2xl shadow-lg transition-all duration-300 ${
+            isFocused ? 'ring-4 ring-blue-200 ring-opacity-30 border-blue-400 shadow-xl transform scale-[1.02]' : 'hover:border-blue-300 hover:shadow-lg'
           }`}
         />
         

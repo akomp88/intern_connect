@@ -452,7 +452,7 @@ const AmbassadorPortal = () => {
       <Header />
       <TabNavigation />
       
-      <main className="pt-8 pb-20 md:pb-8">
+      <main className="pt-24 md:pt-32 pb-20 md:pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Tab Navigation */}
           <div className="flex flex-wrap gap-2 mb-6 border-b border-border">

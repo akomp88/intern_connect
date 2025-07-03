@@ -44,82 +44,40 @@ const TabNavigation = () => {
     }
   ];
 
-  const isActive = (path) => {
-    return location.pathname === path;
-  };
-
   return (
-    <>
-      {/* Desktop Navigation */}
-      <nav className="hidden md:block fixed top-20 left-0 right-0 z-100 bg-surface border-b border-border shadow-sm">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center space-x-8">
-            {navigationItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                title={item.tooltip}
-                className={`relative flex items-center space-x-2 px-4 py-4 text-sm font-medium transition-all duration-200 border-b-2 hover:text-primary group ${
-                  isActive(item.path)
-                    ? 'text-primary border-primary bg-primary-50' :'text-text-secondary border-transparent hover:border-primary-200'
-                }`}
-              >
-                <Icon 
-                  name={item.icon} 
-                  size={18} 
-                  className={`transition-colors duration-200 ${
-                    isActive(item.path) ? 'text-primary' : 'text-text-muted group-hover:text-primary'
+    <nav className="fixed top-16 left-0 right-0 z-40 onedigital-nav border-b border-white border-opacity-10 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between overflow-x-auto scrollbar-hide">
+          <div className="flex space-x-1">
+            {navigationItems.map((item) => {
+              const isActive = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  title={item.tooltip}
+                  className={`flex items-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 group whitespace-nowrap ${
+                    isActive
+                      ? 'bg-white bg-opacity-20 text-white border border-white border-opacity-30'
+                      : 'text-white text-opacity-70 hover:text-white hover:bg-white hover:bg-opacity-10'
                   }`}
-                />
-                <span className="whitespace-nowrap">{item.label}</span>
-                
-                {/* Active indicator */}
-                {isActive(item.path) && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-t-full" />
-                )}
-              </Link>
-            ))}
+                >
+                  <Icon 
+                    name={item.icon} 
+                    size={18} 
+                    className={`transition-transform duration-200 ${isActive ? 'scale-110' : 'group-hover:scale-105'}`}
+                  />
+                  <span className="text-sm font-medium">{item.label}</span>
+                  {isActive && (
+                    <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
+                  )}
+                </Link>
+              );
+            })}
           </div>
         </div>
-      </nav>
-
-      {/* Mobile Bottom Navigation */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-100 bg-surface border-t border-border shadow-elevation-2">
-        <div className="grid grid-cols-6 h-16">
-          {navigationItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`flex flex-col items-center justify-center space-y-1 transition-all duration-200 ${
-                isActive(item.path)
-                  ? 'text-primary bg-primary-50' :'text-text-muted hover:text-primary hover:bg-surface-secondary'
-              }`}
-            >
-              <div className="relative">
-                <Icon 
-                  name={item.icon} 
-                  size={20} 
-                  className="transition-colors duration-200"
-                />
-                {/* Active indicator dot */}
-                {isActive(item.path) && (
-                  <div className="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full animate-pulse-slow" />
-                )}
-              </div>
-              <span className={`text-xs font-medium transition-colors duration-200 ${
-                isActive(item.path) ? 'text-primary' : 'text-text-muted'
-              }`}>
-                {item.label}
-              </span>
-            </Link>
-          ))}
-        </div>
-      </nav>
-
-      {/* Spacer for fixed navigation */}
-      <div className="hidden md:block h-16" />
-      <div className="md:hidden h-16" />
-    </>
+      </div>
+    </nav>
   );
 };
 

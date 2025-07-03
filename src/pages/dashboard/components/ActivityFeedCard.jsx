@@ -50,7 +50,7 @@ const ActivityFeedCard = ({ activity, onReaction, onComment }) => {
   };
 
   return (
-    <div className="bg-surface border border-border rounded-lg p-4 shadow-elevation-1 hover:shadow-elevation-2 transition-shadow duration-200">
+    <div className="bg-gradient-card border border-border-light rounded-2xl p-6 shadow-lg hover:shadow-xl hover:-translate-y-1 hover:border-primary-200 transition-all duration-300 backdrop-blur-sm">
       {/* Header */}
       <div className="flex items-start space-x-3 mb-3">
         <div className="flex-shrink-0">

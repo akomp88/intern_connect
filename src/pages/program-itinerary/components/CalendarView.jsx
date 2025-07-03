@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Button from '../../../components/ui/Button';
+import Icon from '../../../components/AppIcon';
 
 const CalendarView = ({ 
   events, 
@@ -92,6 +93,33 @@ const CalendarView = ({
     return date.getMonth() === currentDate.getMonth();
   };
 
+  const getEventColor = (event) => {
+    switch (event.category) {
+      case 'mentorship':
+        return 'bg-gradient-to-r from-[rgb(103,157,78)] to-[rgb(178,193,74)] text-white';
+      case 'client-meeting':
+      case 'client-prep':
+        return 'bg-gradient-to-r from-[rgb(226,110,56)] to-[rgb(246,198,69)] text-white';
+      case 'standup':
+      case 'tech-talk':
+        return 'bg-gradient-to-r from-[rgb(44,104,142)] to-[rgb(108,178,202)] text-white';
+      case 'orientation':
+      case 'presentation':
+        return event.type === 'mandatory' 
+          ? 'bg-gradient-to-r from-[rgb(44,104,142)] to-[rgb(108,178,202)] text-white'
+          : 'bg-gradient-to-r from-[rgb(103,157,78)] to-[rgb(178,193,74)] text-white';
+      case 'networking':
+      case 'leadership':
+        return 'bg-gradient-to-r from-purple-500 to-pink-500 text-white';
+      case 'workshop':
+        return 'bg-gradient-to-r from-indigo-500 to-blue-500 text-white';
+      default:
+        return event.type === 'mandatory' 
+          ? 'bg-gradient-to-r from-[rgb(44,104,142)] to-[rgb(108,178,202)] text-white'
+          : 'bg-gradient-to-r from-[rgb(103,157,78)] to-[rgb(178,193,74)] text-white';
+    }
+  };
+
   const days = getDaysInMonth(currentDate);
   const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -99,51 +127,57 @@ const CalendarView = ({
   ];
 
   return (
-    <div className="bg-surface rounded-lg border border-border shadow-elevation-1">
+    <div className="bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden">
       {/* Calendar Header */}
-      <div className="flex items-center justify-between p-4 border-b border-border">
-        <div className="flex items-center space-x-4">
-          <h2 className="text-xl font-semibold text-text-primary">
-            {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
-          </h2>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleToday}
-          >
-            Today
-          </Button>
-        </div>
-        
-        <div className="flex items-center space-x-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handlePrevMonth}
-            iconName="ChevronLeft"
-          />
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleNextMonth}
-            iconName="ChevronRight"
-          />
+      <div className="bg-gradient-to-r from-[rgb(44,104,142)] to-[rgb(108,178,202)] text-white p-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <h2 className="text-2xl font-bold">
+              {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
+            </h2>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleToday}
+              className="bg-white bg-opacity-20 border-white border-opacity-30 text-white hover:bg-white hover:bg-opacity-30 backdrop-blur-sm"
+            >
+              Today
+            </Button>
+          </div>
+          
+          <div className="flex items-center space-x-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handlePrevMonth}
+              iconName="ChevronLeft"
+              className="text-white hover:bg-white hover:bg-opacity-20 rounded-full p-2"
+            />
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleNextMonth}
+              iconName="ChevronRight"
+              className="text-white hover:bg-white hover:bg-opacity-20 rounded-full p-2"
+            />
+          </div>
         </div>
       </div>
 
       {/* Calendar Grid */}
-      <div className="p-4">
+      <div className="p-6">
         {/* Day Headers */}
-        <div className="grid grid-cols-7 gap-1 mb-2">
-          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-            <div key={day} className="p-2 text-center text-sm font-medium text-text-secondary">
-              {day}
+        <div className="grid grid-cols-7 gap-2 mb-4">
+          {['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(day => (
+            <div key={day} className="p-3 text-center text-sm font-semibold text-gray-700 bg-gray-50 rounded-lg">
+              <span className="hidden sm:inline">{day}</span>
+              <span className="sm:hidden">{day.slice(0, 3)}</span>
             </div>
           ))}
         </div>
 
         {/* Calendar Days */}
-        <div className="grid grid-cols-7 gap-1">
+        <div className="grid grid-cols-7 gap-2">
           {days.map((date, index) => {
             const dayEvents = getEventsForDate(date);
             
@@ -151,19 +185,18 @@ const CalendarView = ({
               <div
                 key={index}
                 className={`
-                  min-h-24 p-1 border border-border-light rounded-lg
-                  ${date ? 'bg-surface hover:bg-surface-secondary cursor-pointer' : 'bg-transparent'}
-                  ${isToday(date) ? 'ring-2 ring-primary bg-primary-50' : ''}
+                  min-h-32 p-2 rounded-xl border-2 transition-all duration-200
+                  ${date ? 'bg-gray-50 hover:bg-white hover:shadow-lg cursor-pointer border-gray-100' : 'bg-transparent border-transparent'}
+                  ${isToday(date) ? 'ring-2 ring-[rgb(44,104,142)] bg-blue-50 border-[rgb(44,104,142)]' : ''}
                   ${!isCurrentMonth(date) ? 'opacity-40' : ''}
-                  transition-colors duration-150
                 `}
                 onDragOver={handleDragOver}
                 onDrop={(e) => handleDrop(e, date)}
               >
                 {date && (
                   <>
-                    <div className={`text-sm font-medium mb-1 ${
-                      isToday(date) ? 'text-primary' : 'text-text-primary'
+                    <div className={`text-sm font-bold mb-2 ${
+                      isToday(date) ? 'text-[rgb(44,104,142)]' : 'text-gray-800'
                     }`}>
                       {date.getDate()}
                     </div>
@@ -176,21 +209,33 @@ const CalendarView = ({
                           onDragStart={(e) => handleDragStart(e, event)}
                           onClick={() => onEventClick(event)}
                           className={`
-                            text-xs p-1 rounded cursor-pointer truncate
-                            ${event.type === 'mandatory' ?'bg-primary text-primary-foreground' :'bg-secondary text-secondary-foreground'
-                            }
-                            ${isAdmin ? 'hover:opacity-80' : ''}
-                            transition-opacity duration-150
+                            text-xs p-2 rounded-lg cursor-pointer truncate shadow-sm
+                            ${getEventColor(event)}
+                            ${isAdmin ? 'hover:shadow-md transform hover:scale-105' : 'hover:shadow-md hover:scale-102'}
+                            transition-all duration-200 font-medium border border-white border-opacity-20
                           `}
-                          title={event.title}
+                          title={`${event.title} - ${event.startTime} • Click to RSVP`}
                         >
-                          {event.title}
+                          <div className="flex items-center space-x-1">
+                            {event.isVirtual && <span className="text-xs">💻</span>}
+                            {event.category === 'mentorship' && <span className="text-xs">🤝</span>}
+                            {event.category === 'client-meeting' && <span className="text-xs">👥</span>}
+                            {event.category === 'standup' && <span className="text-xs">🔄</span>}
+                            <span className="truncate">{event.title}</span>
+                          </div>
                         </div>
                       ))}
                       
                       {dayEvents.length > 3 && (
-                        <div className="text-xs text-text-muted p-1">
-                          +{dayEvents.length - 3} more
+                        <div 
+                          className="text-xs text-gray-500 p-1 bg-gray-100 rounded text-center font-medium cursor-pointer hover:bg-gray-200 transition-colors duration-200"
+                          onClick={() => {
+                            const firstEvent = dayEvents[0];
+                            if (firstEvent) onEventClick(firstEvent);
+                          }}
+                          title="Click to view more events"
+                        >
+                          +{dayEvents.length - 3} more events
                         </div>
                       )}
                     </div>
@@ -202,15 +247,43 @@ const CalendarView = ({
         </div>
       </div>
 
-      {/* Legend */}
-      <div className="flex items-center justify-center space-x-6 p-4 border-t border-border bg-surface-secondary">
-        <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-primary rounded"></div>
-          <span className="text-sm text-text-secondary">Mandatory</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-secondary rounded"></div>
-          <span className="text-sm text-text-secondary">Optional</span>
+      {/* Enhanced Legend */}
+      <div className="bg-gray-50 p-6 border-t border-gray-200">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <h3 className="text-sm font-semibold text-gray-700 mb-3">Event Categories</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-4 bg-gradient-to-r from-[rgb(44,104,142)] to-[rgb(108,178,202)] rounded"></div>
+                <span className="text-xs text-gray-600">Mandatory</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-4 bg-gradient-to-r from-[rgb(103,157,78)] to-[rgb(178,193,74)] rounded"></div>
+                <span className="text-xs text-gray-600">Mentorship</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-4 bg-gradient-to-r from-[rgb(226,110,56)] to-[rgb(246,198,69)] rounded"></div>
+                <span className="text-xs text-gray-600">Client/Prep</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded"></div>
+                <span className="text-xs text-gray-600">Networking</span>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-4 lg:mt-0">
+            <div className="flex items-center space-x-4 text-xs text-gray-600">
+              <div className="flex items-center space-x-2">
+                <Icon name="MousePointer" size={14} className="text-gray-500" />
+                <span>Click events to RSVP</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Icon name="Calendar" size={14} className="text-gray-500" />
+                <span>View details & accept/decline</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

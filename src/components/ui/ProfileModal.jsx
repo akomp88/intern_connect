@@ -3,7 +3,7 @@ import Icon from '../AppIcon';
 import Button from './Button';
 import Image from '../AppImage';
 
-const ProfileModal = ({ user, isOpen, onClose, onConnect, onMessage, onViewProfile }) => {
+const ProfileModal = ({ user, isOpen, onClose, onConnect, onMessage, onEmail, onViewProfile }) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -59,6 +59,15 @@ const ProfileModal = ({ user, isOpen, onClose, onConnect, onMessage, onViewProfi
       onViewProfile(user.id);
     }
     onClose();
+  };
+
+  const handleEmailClick = () => {
+    if (onEmail && user.email) {
+      onEmail(user.email, user.name);
+    } else if (user.email) {
+      // Fallback to simple mailto if no enhanced handler provided
+      window.location.href = `mailto:${user.email}`;
+    }
   };
 
   return (
@@ -181,7 +190,13 @@ const ProfileModal = ({ user, isOpen, onClose, onConnect, onMessage, onViewProfi
               {user.email && (
                 <div className="flex items-center space-x-3">
                   <Icon name="Mail" size={16} className="text-text-muted" />
-                  <span className="text-sm text-text-secondary">{user.email}</span>
+                  <button
+                    onClick={handleEmailClick}
+                    className="text-sm text-[rgb(44,104,142)] hover:text-[rgb(108,178,202)] underline hover:no-underline transition-colors cursor-pointer"
+                    title="Send email"
+                  >
+                    {user.email}
+                  </button>
                 </div>
               )}
               
@@ -239,6 +254,20 @@ const ProfileModal = ({ user, isOpen, onClose, onConnect, onMessage, onViewProfi
               >
                 Message
               </Button>
+
+              {user.email && (
+                <Button
+                  variant="ghost"
+                  fullWidth
+                  onClick={handleEmailClick}
+                  iconName="Mail"
+                  iconPosition="left"
+                  className="hover:bg-gradient-to-r hover:from-[rgb(103,157,78)] hover:to-[rgb(178,193,74)] hover:text-white transition-all duration-300"
+                  title="Send email"
+                >
+                  Email
+                </Button>
+              )}
             </div>
           </div>
         </div>
