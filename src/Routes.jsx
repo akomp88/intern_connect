@@ -13,7 +13,7 @@ import NotFound from "pages/NotFound";
 
 const Routes = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/intern_connect">
       <ErrorBoundary>
       <ScrollToTop />
       <RouterRoutes>
