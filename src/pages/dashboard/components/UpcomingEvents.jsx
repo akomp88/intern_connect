@@ -3,38 +3,68 @@ import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 
 const UpcomingEvents = ({ events, onViewAll, onRSVP }) => {
+  // Helper function to get next weekday dates
+  const getNextWeekdays = (count = 4) => {
+    const dates = [];
+    const today = new Date();
+    let currentDate = new Date(today);
+    
+    while (dates.length < count) {
+      currentDate.setDate(currentDate.getDate() + 1);
+      const dayOfWeek = currentDate.getDay();
+      // Only include weekdays (Monday=1 to Friday=5)
+      if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+        dates.push(new Date(currentDate));
+      }
+    }
+    return dates;
+  };
+
+  const weekdays = getNextWeekdays(4);
+
   const mockEvents = [
     {
       id: 1,
-      title: "Tech Talk: AI in Modern Development",
-      date: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
-      time: "2:00 PM - 3:30 PM",
-      location: "Conference Room A",
+      title: "JUMPSTART Book Club Meeting with Miranda",
+      date: weekdays[0],
+      time: "11:00 AM - 12:00 PM",
+      location: "Conference Room B",
       type: "mandatory",
-      attendees: 24,
-      maxAttendees: 30,
-      rsvpStatus: null
+      attendees: 8,
+      maxAttendees: 12,
+      rsvpStatus: "going"
     },
     {
       id: 2,
-      title: "Mentor Coffee Chat",
-      date: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-      time: "10:00 AM - 11:00 AM",
-      location: "Cafeteria",
-      type: "optional",
-      attendees: 8,
-      maxAttendees: 15,
+      title: "Mentor Weekly Check-in",
+      date: weekdays[1],
+      time: "2:00 PM - 2:30 PM",
+      location: "Virtual Meeting",
+      type: "mandatory",
+      attendees: 1,
+      maxAttendees: 1,
       rsvpStatus: "going"
     },
     {
       id: 3,
-      title: "Sprint Planning Session",
-      date: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
-      time: "9:00 AM - 10:30 AM",
-      location: "Virtual Meeting",
+      title: "JUMPSTART Session: Masterful Notetaking & Project Management",
+      date: weekdays[2],
+      time: "10:00 AM - 11:30 AM",
+      location: "Training Room A",
       type: "mandatory",
-      attendees: 12,
-      maxAttendees: 12,
+      attendees: 15,
+      maxAttendees: 20,
+      rsvpStatus: "going"
+    },
+    {
+      id: 4,
+      title: "Intern Group Project Meeting",
+      date: weekdays[3],
+      time: "3:00 PM - 4:00 PM",
+      location: "Collaboration Space",
+      type: "mandatory",
+      attendees: 6,
+      maxAttendees: 8,
       rsvpStatus: "going"
     }
   ];
@@ -122,7 +152,7 @@ const UpcomingEvents = ({ events, onViewAll, onRSVP }) => {
           </div>
           <div>
             <h3 className="text-lg font-semibold text-text-primary">Upcoming Events</h3>
-            <p className="text-sm text-text-secondary">Your program schedule</p>
+            <p className="text-sm text-text-secondary">Your JUMPSTART program schedule</p>
           </div>
         </div>
         
