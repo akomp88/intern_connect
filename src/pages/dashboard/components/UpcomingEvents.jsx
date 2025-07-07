@@ -30,8 +30,8 @@ const UpcomingEvents = ({ events, onViewAll, onRSVP }) => {
       time: "11:00 AM - 12:00 PM",
       location: "Conference Room B",
       type: "mandatory",
-      attendees: 8,
-      maxAttendees: 12,
+      attendees: 25,
+      maxAttendees: 30,
       rsvpStatus: "going"
     },
     {
@@ -52,8 +52,8 @@ const UpcomingEvents = ({ events, onViewAll, onRSVP }) => {
       time: "10:00 AM - 11:30 AM",
       location: "Training Room A",
       type: "mandatory",
-      attendees: 15,
-      maxAttendees: 20,
+      attendees: 28,
+      maxAttendees: 30,
       rsvpStatus: "going"
     },
     {
@@ -63,8 +63,8 @@ const UpcomingEvents = ({ events, onViewAll, onRSVP }) => {
       time: "3:00 PM - 4:00 PM",
       location: "Collaboration Space",
       type: "mandatory",
-      attendees: 6,
-      maxAttendees: 8,
+      attendees: 4,
+      maxAttendees: 5,
       rsvpStatus: "going"
     }
   ];
