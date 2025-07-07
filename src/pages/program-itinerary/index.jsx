@@ -33,224 +33,189 @@ const ProgramItinerary = () => {
     isAdmin: false
   };
 
-  // Mock events data
+  // OneDigital JUMPSTART Program Events
   const [events, setEvents] = useState([
     {
-      id: 'event-1',
-      title: 'Intern Orientation',
-      description: `Welcome to our comprehensive intern orientation program! This session will cover:\n\n• Company culture and values\n• Organizational structure and key contacts\n• IT setup and security protocols\n• Benefits and HR policies\n• Q&A session with leadership\n\nPlease bring a valid ID and be prepared to take notes. Light refreshments will be provided.`,
-      date: '2024-12-20',
-      startTime: '09:00',
-      endTime: '12:00',
-      location: 'Conference Room A, Building 1',
-      type: 'mandatory',
-      category: 'orientation',
-      isVirtual: false,
-      organizer: 'HR Team',
-      maxAttendees: 50,
-      tags: ['orientation', 'mandatory', 'hr'],
-      rsvps: [
-        { userId: 'user-1', status: 'attending', timestamp: '2024-12-15T10:00:00Z' },
-        { userId: 'user-2', status: 'attending', timestamp: '2024-12-15T11:00:00Z' },
-        { userId: 'user-3', status: 'not_attending', timestamp: '2024-12-15T12:00:00Z' },
-        { userId: 'user-4', status: 'pending', timestamp: null }
-      ]
-    },
-    {
-      id: 'event-2',
-      title: 'One-on-One Mentor Meeting',
-      description: `Weekly mentorship session to discuss your progress, challenges, and career development.\n\nAgenda:\n• Review weekly accomplishments\n• Discuss current challenges\n• Set goals for next week\n• Career guidance and advice\n• Technical skill development\n\nCome prepared with questions and specific topics you'd like to discuss.`,
-      date: '2024-12-21',
+      id: 'event-july-1-book-club',
+      title: 'JUMPSTART Book Club / Crucial Conversations',
+      description: `Join us for an engaging book club discussion focusing on "Crucial Conversations" - essential skills for effective communication in the workplace.\n\nToday's session will cover:\n• Tools for talking when stakes are high\n• How to create safety in dialogue\n• Mastering your stories and emotions\n• STATE method for sharing tough messages\n• GROUP discussion and real-world applications\n\nCome prepared to discuss chapters 4-6 and bring examples from your own experiences.`,
+      date: '2025-07-01',
       startTime: '14:00',
       endTime: '15:00',
-      location: 'Sarah\'s Office - Building 2, Floor 3',
-      type: 'optional',
-      category: 'mentorship',
-      isVirtual: false,
-      organizer: 'Sarah Chen - Senior Engineer',
-      maxAttendees: 1,
-      tags: ['mentorship', '1:1', 'career-development'],
-      rsvps: [
-        { userId: 'user-1', status: 'attending', timestamp: '2024-12-16T09:00:00Z' }
-      ]
-    },
-    {
-      id: 'event-3',
-      title: 'Client Demo Preparation - Zoom Meeting',
-      description: `Virtual meeting to prepare for the upcoming client demonstration.\n\nMeeting objectives:\n• Review demo script and flow\n• Test technical setup and screen sharing\n• Practice Q&A scenarios\n• Assign roles and responsibilities\n• Technical rehearsal\n\nPlease test your audio/video setup before joining.`,
-      date: '2024-12-22',
-      startTime: '10:00',
-      endTime: '11:30',
-      location: 'Virtual Event',
+      location: 'Conference Room B, OneDigital HQ',
       type: 'mandatory',
-      category: 'client-prep',
-      isVirtual: true,
-      meetingLink: 'https://zoom.us/j/123456789',
-      organizer: 'Product Team',
-      maxAttendees: 8,
-      tags: ['client', 'demo', 'preparation', 'zoom'],
-      rsvps: [
-        { userId: 'user-1', status: 'attending', timestamp: '2024-12-16T09:00:00Z' },
-        { userId: 'user-2', status: 'attending', timestamp: '2024-12-16T10:00:00Z' },
-        { userId: 'user-5', status: 'attending', timestamp: '2024-12-16T11:00:00Z' }
-      ]
-    },
-    {
-      id: 'event-4',
-      title: 'Tech Talk: AI in Modern Development',
-      description: `Join us for an exciting tech talk exploring the latest trends in AI and machine learning in software development.\n\nTopics covered:\n• Introduction to Large Language Models\n• AI-powered code generation tools\n• Best practices for AI integration\n• Future of AI in development workflows\n\nThis session is perfect for interns interested in cutting-edge technology and its practical applications.`,
-      date: '2024-12-22',
-      startTime: '14:00',
-      endTime: '15:30',
-      location: 'Virtual Event',
-      type: 'optional',
-      category: 'tech-talk',
-      isVirtual: true,
-      meetingLink: 'https://zoom.us/j/987654321',
-      organizer: 'Engineering Team',
-      maxAttendees: 100,
-      tags: ['tech-talk', 'ai', 'development'],
-      rsvps: [
-        { userId: 'user-1', status: 'attending', timestamp: '2024-12-16T09:00:00Z' },
-        { userId: 'user-2', status: 'attending', timestamp: '2024-12-16T10:00:00Z' },
-        { userId: 'user-5', status: 'attending', timestamp: '2024-12-16T11:00:00Z' }
-      ]
-    },
-    {
-      id: 'event-5',
-      title: 'Client Meeting: Health Solutions Corp',
-      description: `Important client meeting with Health Solutions Corp to present our latest platform features and discuss their specific requirements.\n\nMeeting goals:\n• Present new dashboard analytics\n• Demonstrate mobile app integration\n• Discuss custom feature requests\n• Review implementation timeline\n• Establish next steps\n\nProfessional attire required. Please review the client brief before attending.`,
-      date: '2024-12-23',
-      startTime: '09:00',
-      endTime: '10:30',
-      location: 'Client Conference Room, Downtown Office',
-      type: 'mandatory',
-      category: 'client-meeting',
+      category: 'jumpstart',
       isVirtual: false,
-      organizer: 'Sales & Product Teams',
-      maxAttendees: 6,
-      tags: ['client', 'presentation', 'healthcare', 'sales'],
-      rsvps: [
-        { userId: 'user-1', status: 'attending', timestamp: '2024-12-17T14:00:00Z' },
-        { userId: 'user-2', status: 'attending', timestamp: '2024-12-17T15:00:00Z' },
-        { userId: 'user-3', status: 'attending', timestamp: '2024-12-17T15:00:00Z' }
-      ]
-    },
-    {
-      id: 'event-6',
-      title: 'Networking Lunch',
-      description: `Casual networking lunch for all interns to connect with peers and full-time employees.\n\nThis is a great opportunity to:\n• Meet interns from other departments\n• Connect with potential mentors\n• Share experiences and learn from others\n• Build lasting professional relationships\n\nLunch will be provided. Please RSVP so we can get an accurate headcount for catering.`,
-      date: '2024-12-23',
-      startTime: '12:00',
-      endTime: '13:30',
-      location: 'Cafeteria, Building 2',
-      type: 'optional',
-      category: 'networking',
-      isVirtual: false,
-      organizer: 'Intern Program Team',
-      tags: ['networking', 'social', 'lunch'],
-      rsvps: [
-        { userId: 'user-1', status: 'pending', timestamp: null },
-        { userId: 'user-2', status: 'attending', timestamp: '2024-12-17T14:00:00Z' },
-        { userId: 'user-3', status: 'attending', timestamp: '2024-12-17T15:00:00Z' }
-      ]
-    },
-    {
-      id: 'event-7',
-      title: 'Team Standup - Daily Sync',
-      description: `Daily team standup meeting to sync on progress and blockers.\n\nStandup format:\n• What did you accomplish yesterday?\n• What are you working on today?\n• Any blockers or challenges?\n• Quick wins and celebrations\n\nKeep updates concise (2-3 minutes max per person).`,
-      date: '2024-12-24',
-      startTime: '09:30',
-      endTime: '10:00',
-      location: 'Team Room 3B or Zoom',
-      type: 'mandatory',
-      category: 'standup',
-      isVirtual: true,
-      meetingLink: 'https://zoom.us/j/555777999',
-      organizer: 'Development Team',
-      maxAttendees: 12,
-      tags: ['standup', 'daily', 'team-sync'],
-      rsvps: [
-        { userId: 'user-1', status: 'attending', timestamp: '2024-12-18T08:00:00Z' },
-        { userId: 'user-4', status: 'attending', timestamp: '2024-12-18T09:00:00Z' }
-      ]
-    },
-    {
-      id: 'event-8',
-      title: 'Group Mentorship Session',
-      description: `Monthly group mentorship session with senior engineers and product managers.\n\nSession topics:\n• Career path discussions\n• Industry trends and insights\n• Technical skill development\n• Work-life balance strategies\n• Networking and professional growth\n\nBring your questions and be ready to learn from experienced professionals!`,
-      date: '2024-12-26',
-      startTime: '15:00',
-      endTime: '16:30',
-      location: 'Innovation Lab, Building 1',
-      type: 'optional',
-      category: 'mentorship',
-      isVirtual: false,
-      organizer: 'Senior Leadership Team',
-      maxAttendees: 15,
-      tags: ['mentorship', 'group', 'career-development', 'leadership'],
-      rsvps: [
-        { userId: 'user-1', status: 'attending', timestamp: '2024-12-18T08:00:00Z' },
-        { userId: 'user-4', status: 'attending', timestamp: '2024-12-18T09:00:00Z' }
-      ]
-    },
-    {
-      id: 'event-9',
-      title: 'Project Presentation Workshop',
-      description: `Learn essential presentation skills for your final intern project presentations.\n\nWorkshop agenda:\n• Structuring your presentation\n• Creating compelling slides\n• Public speaking tips and techniques\n• Handling Q&A sessions\n• Practice sessions with feedback\n\nThis workshop is highly recommended for all interns as it will directly help with your final presentations.`,
-      date: '2024-12-27',
-      startTime: '10:00',
-      endTime: '12:00',
-      location: 'Training Room B, Building 3',
-      type: 'optional',
-      category: 'workshop',
-      isVirtual: false,
-      organizer: 'Learning & Development',
+      organizer: 'Miranda - JUMPSTART Program Director',
       maxAttendees: 30,
-      tags: ['workshop', 'presentation', 'skills'],
+      tags: ['jumpstart', 'book-club', 'communication', 'mandatory'],
       rsvps: [
-        { userId: 'user-1', status: 'attending', timestamp: '2024-12-18T08:00:00Z' },
-        { userId: 'user-4', status: 'attending', timestamp: '2024-12-18T09:00:00Z' }
+        { userId: 'user-1', status: 'attending', timestamp: '2025-06-25T10:00:00Z' },
+        { userId: 'user-2', status: 'attending', timestamp: '2025-06-25T11:00:00Z' },
+        { userId: 'user-3', status: 'attending', timestamp: '2025-06-25T12:00:00Z' },
+        { userId: 'user-4', status: 'attending', timestamp: '2025-06-25T13:00:00Z' }
       ]
     },
     {
-      id: 'event-10',
-      title: 'Coffee Chat with Leadership',
-      description: `Informal coffee chat session with company leadership. This is a unique opportunity to ask questions, share feedback, and learn about career paths within the organization.\n\nAttending executives:\n• CEO - Sarah Johnson\n• CTO - Michael Chen\n• VP of Engineering - Lisa Rodriguez\n• Head of HR - David Kim\n\nCome prepared with thoughtful questions about the company, industry trends, or career advice.`,
-      date: '2024-12-30',
+      id: 'event-july-1-project',
+      title: 'Intern Group Project',
+      description: `Collaborative project session where intern teams work together on real-world challenges and present solutions.\n\nToday's agenda:\n• Project status updates from each team\n• Problem-solving workshop\n• Peer feedback and collaboration\n• Resource allocation and planning\n• Next milestone planning\n\nBring your laptops and current project materials. Teams will present 5-minute progress updates.`,
+      date: '2025-07-01',
       startTime: '15:00',
       endTime: '16:00',
-      location: 'Executive Lounge, Building 1',
-      type: 'optional',
-      category: 'leadership',
+      location: 'Collaboration Space, OneDigital HQ',
+      type: 'mandatory',
+      category: 'project',
       isVirtual: false,
-      organizer: 'Executive Team',
-      maxAttendees: 20,
-      tags: ['leadership', 'coffee-chat', 'networking'],
+      organizer: 'JUMPSTART Program Team',
+      maxAttendees: 5,
+      tags: ['project', 'collaboration', 'intern-teams', 'mandatory'],
       rsvps: [
-        { userId: 'user-1', status: 'pending', timestamp: null },
-        { userId: 'user-2', status: 'attending', timestamp: '2024-12-20T16:00:00Z' }
+        { userId: 'user-1', status: 'attending', timestamp: '2025-06-25T10:00:00Z' },
+        { userId: 'user-2', status: 'attending', timestamp: '2025-06-25T11:00:00Z' },
+        { userId: 'user-3', status: 'attending', timestamp: '2025-06-25T12:00:00Z' },
+        { userId: 'user-4', status: 'attending', timestamp: '2025-06-25T13:00:00Z' }
       ]
     },
     {
-      id: 'event-11',
-      title: 'Final Project Presentations',
-      description: `Present your intern project to leadership and peers. This is your opportunity to showcase the work you've accomplished during your internship.\n\nPresentation format:\n• 10 minutes presentation\n• 5 minutes Q&A\n• Feedback from panel\n• Networking reception afterward\n\nAll interns are required to present their projects. Family and friends are welcome to attend the reception.`,
-      date: '2025-01-15',
-      startTime: '09:00',
-      endTime: '17:00',
-      location: 'Main Auditorium, Building 1',
+      id: 'event-july-3-stress',
+      title: 'Rethinking Stress (JUMPSTART Session)',
+      description: `Transform your relationship with stress in this comprehensive JUMPSTART wellness session.\n\nSession highlights:\n• Understanding stress vs. pressure\n• Identifying personal stress triggers\n• Evidence-based stress management techniques\n• Building resilience and mental flexibility\n• Practical tools for workplace wellness\n• Group discussion and peer support\n\nThis session will provide actionable strategies to help you thrive in challenging situations and maintain well-being throughout your internship.`,
+      date: '2025-07-03',
+      startTime: '12:00',
+      endTime: '13:30',
+      location: 'Training Room A, OneDigital HQ',
       type: 'mandatory',
-      category: 'presentation',
+      category: 'jumpstart',
       isVirtual: false,
-      organizer: 'Intern Program Team',
-      tags: ['presentation', 'final-project', 'mandatory'],
+      organizer: 'JUMPSTART Wellness Team',
+      maxAttendees: 30,
+      tags: ['jumpstart', 'wellness', 'stress-management', 'mandatory'],
       rsvps: [
-        { userId: 'user-1', status: 'attending', timestamp: '2024-12-19T10:00:00Z' },
-        { userId: 'user-2', status: 'attending', timestamp: '2024-12-19T11:00:00Z' },
-        { userId: 'user-3', status: 'attending', timestamp: '2024-12-19T12:00:00Z' }
+        { userId: 'user-1', status: 'attending', timestamp: '2025-06-25T10:00:00Z' },
+        { userId: 'user-2', status: 'attending', timestamp: '2025-06-25T11:00:00Z' },
+        { userId: 'user-3', status: 'attending', timestamp: '2025-06-25T12:00:00Z' }
       ]
-    }
+    },
+    {
+      id: 'event-july-7-notetaking',
+      title: 'Masterful Notetaking & Project Management (JUMPSTART SESSION)',
+      description: `Master the art of effective notetaking and project management in this hands-on JUMPSTART skills session.\n\nKey learning outcomes:\n• Digital and analog notetaking strategies\n• Meeting documentation best practices\n• Project planning and task prioritization\n• Tools and apps for productivity\n• Information organization systems\n• Action item tracking and follow-up\n\nBring your laptop and notebook - we'll be practicing various techniques and setting up systems you can use immediately.`,
+      date: '2025-07-07',
+      startTime: '14:30',
+      endTime: '16:00',
+      location: 'Training Room B, OneDigital HQ',
+      type: 'mandatory',
+      category: 'jumpstart',
+      isVirtual: false,
+      organizer: 'JUMPSTART Skills Development Team',
+      maxAttendees: 30,
+      tags: ['jumpstart', 'productivity', 'project-management', 'mandatory'],
+      rsvps: [
+        { userId: 'user-1', status: 'attending', timestamp: '2025-06-25T10:00:00Z' },
+        { userId: 'user-2', status: 'attending', timestamp: '2025-06-25T11:00:00Z' },
+        { userId: 'user-3', status: 'attending', timestamp: '2025-06-25T12:00:00Z' }
+      ]
+    },
+    {
+      id: 'event-july-8-project',
+      title: 'Intern JUMPSTART Project Meeting',
+      description: `Weekly project collaboration session for JUMPSTART intern teams to advance their capstone projects.\n\nSession focus:\n• Project milestone reviews\n• Cross-team collaboration opportunities\n• Resource sharing and problem-solving\n• Mentor guidance and feedback\n• Presentation preparation strategies\n• Timeline adjustments and planning\n\nEach team will present their progress and receive feedback from peers and mentors. Come prepared with your current challenges and questions.`,
+      date: '2025-07-08',
+      startTime: '14:30',
+      endTime: '15:30',
+      location: 'Innovation Lab, OneDigital HQ',
+      type: 'mandatory',
+      category: 'project',
+      isVirtual: false,
+      organizer: 'JUMPSTART Project Mentors',
+      maxAttendees: 5,
+      tags: ['jumpstart', 'project', 'collaboration', 'mandatory'],
+      rsvps: [
+        { userId: 'user-1', status: 'attending', timestamp: '2025-06-25T10:00:00Z' },
+        { userId: 'user-2', status: 'attending', timestamp: '2025-06-25T11:00:00Z' },
+        { userId: 'user-3', status: 'attending', timestamp: '2025-06-25T12:00:00Z' }
+      ]
+    },
+    {
+      id: 'event-july-9-checkin',
+      title: 'Group 2 Weekly Check-in',
+      description: `Weekly group check-in session for cohort 2 JUMPSTART interns to sync on progress and support each other.\n\nAgenda includes:\n• Individual progress updates\n• Challenge sharing and problem-solving\n• Peer support and networking\n• Program feedback and suggestions\n• Goal setting for the upcoming week\n• Group Q&A session\n\nThis is a safe space to share your experiences, ask questions, and learn from your peers. Come prepared to share your wins and challenges.`,
+      date: '2025-07-09',
+      startTime: '14:30',
+      endTime: '15:30',
+      location: 'Conference Room C, OneDigital HQ',
+      type: 'mandatory',
+      category: 'mentorship',
+      isVirtual: false,
+      organizer: 'JUMPSTART Program Coordinators',
+      maxAttendees: 15,
+      tags: ['jumpstart', 'check-in', 'peer-support', 'mandatory'],
+      rsvps: [
+        { userId: 'user-1', status: 'attending', timestamp: '2025-06-25T10:00:00Z' },
+        { userId: 'user-2', status: 'attending', timestamp: '2025-06-25T11:00:00Z' },
+        { userId: 'user-3', status: 'attending', timestamp: '2025-06-25T12:00:00Z' }
+      ]
+    },
+    {
+      id: 'event-july-9-mentor',
+      title: 'Weekly Mentor Mentee Meeting',
+      description: `One-on-one mentorship session with your assigned JUMPSTART mentor for personalized career guidance and skill development.\n\nSession structure:\n• Review weekly accomplishments and challenges\n• Discuss career goals and development areas\n• Receive guidance on current projects\n• Explore industry insights and trends\n• Plan learning objectives for the next week\n• Q&A and professional advice\n\nCome prepared with specific questions about your career path, current projects, or any challenges you're facing. This is your dedicated time for personalized mentorship.`,
+      date: '2025-07-09',
+      startTime: '16:00',
+      endTime: '17:00',
+      location: 'Mentor Office / Virtual Meeting',
+      type: 'mandatory',
+      category: 'mentorship',
+      isVirtual: false,
+      organizer: 'JUMPSTART Mentor Program',
+      maxAttendees: 1,
+      tags: ['mentorship', '1:1', 'career-development', 'weekly'],
+      rsvps: [
+        { userId: 'user-1', status: 'attending', timestamp: '2025-06-25T10:00:00Z' }
+      ]
+    },
+    {
+      id: 'event-july-10-bookclub',
+      title: 'JUMPSTART Book Club / Crucial Conversations',
+      description: `Continue our deep dive into "Crucial Conversations" with this engaging follow-up book club session.\n\nToday's discussion topics:\n• Learning to Look - recognizing conversation patterns\n• Making it Safe - creating the right conditions for dialogue\n• Sharing your path of action\n• Exploring others' paths and perspectives\n• Real-world application stories from participants\n\nCome prepared to discuss chapters 7-9 and share how you've applied the concepts from our last session in your daily interactions.`,
+      date: '2025-07-10',
+      startTime: '14:00',
+      endTime: '15:00',
+      location: 'Conference Room B, OneDigital HQ',
+      type: 'mandatory',
+      category: 'jumpstart',
+      isVirtual: false,
+      organizer: 'Miranda - JUMPSTART Program Director',
+      maxAttendees: 30,
+      tags: ['jumpstart', 'book-club', 'communication', 'mandatory'],
+      rsvps: [
+        { userId: 'user-1', status: 'attending', timestamp: '2025-06-25T10:00:00Z' },
+        { userId: 'user-2', status: 'attending', timestamp: '2025-06-25T11:00:00Z' },
+        { userId: 'user-3', status: 'attending', timestamp: '2025-06-25T12:00:00Z' },
+        { userId: 'user-4', status: 'attending', timestamp: '2025-06-25T13:00:00Z' }
+      ]
+    },
+    {
+      id: 'event-july-10-deepdive',
+      title: 'Bi-Weekly Project Plan Deep Dive',
+      description: `Intensive project planning and strategy session held every two weeks to ensure all JUMPSTART capstone projects stay on track.\n\nDeep dive focus areas:\n• Detailed project timeline review\n• Resource allocation and requirements\n• Risk assessment and mitigation strategies\n• Stakeholder alignment and expectations\n• Technical architecture decisions\n• Success metrics and evaluation criteria\n\nThis session provides dedicated time for thorough project planning, team alignment, and strategic decision-making. Bring your project plans, timelines, and any blocking issues.`,
+      date: '2025-07-10',
+      startTime: '15:30',
+      endTime: '17:00',
+      location: 'Strategy Room, OneDigital HQ',
+      type: 'mandatory',
+      category: 'project',
+      isVirtual: false,
+      organizer: 'JUMPSTART Project Leadership',
+      maxAttendees: 5,
+      tags: ['jumpstart', 'project-planning', 'strategy', 'mandatory'],
+      rsvps: [
+        { userId: 'user-1', status: 'attending', timestamp: '2025-06-25T10:00:00Z' },
+        { userId: 'user-2', status: 'attending', timestamp: '2025-06-25T11:00:00Z' },
+        { userId: 'user-3', status: 'attending', timestamp: '2025-06-25T12:00:00Z' }
+              ]
+      }
   ]);
 
   // Filter events based on current filters
