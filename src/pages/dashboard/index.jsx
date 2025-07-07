@@ -265,8 +265,8 @@ const Dashboard = () => {
                   onClick={() => handleQuickAction('log-week')}
                 />
                 <QuickActionCard
-                  title="View My PDF Archive"
-                  description="Access and download your previous weekly reports"
+                  title="View all saved Meetings"
+                  description="Revisit Zoom meetings and powerpoints from previous weeks"
                   icon="FileText"
                   variant="success"
                   onClick={() => handleQuickAction('view-archive')}
