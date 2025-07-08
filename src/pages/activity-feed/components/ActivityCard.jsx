@@ -49,7 +49,10 @@ const ActivityCard = ({ activity, onReaction, onComment, onDirectMessage }) => {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm overflow-hidden">
+    <div className="bg-white/80 backdrop-blur-lg border border-gray-200/50 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden group relative">
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-blue-50/30 pointer-events-none"></div>
+      <div className="relative z-10">
       {/* Card Header */}
       <div className="p-6 pb-4">
         <div className="flex items-start space-x-4">
@@ -265,6 +268,7 @@ const ActivityCard = ({ activity, onReaction, onComment, onDirectMessage }) => {
           />
         </div>
       )}
+      </div>
     </div>
   );
 };

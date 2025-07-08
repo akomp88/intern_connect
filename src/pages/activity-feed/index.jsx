@@ -32,31 +32,79 @@ const ActivityFeed = () => {
       id: 1,
       author: {
         id: 'user-1',
-        name: 'Sarah Chen',
-        role: 'Product Management Intern',
-        team: 'Product Management',
-        office: 'San Francisco',
-        avatar: 'https://randomuser.me/api/portraits/women/1.jpg'
+        name: 'Jordan Martinez',
+        role: 'Financial Analyst Intern',
+        team: 'Finance',
+        office: 'OneDigital HQ',
+        avatar: 'https://randomuser.me/api/portraits/women/22.jpg'
       },
-      content: `Just completed my first user research session for the mobile app redesign project! 🎯\n\nKey insights from today's interviews:\n• Users want faster navigation between main features\n• The current onboarding flow is too lengthy\n• Push notifications need better customization options\n\nExcited to synthesize these findings and present to the team next week. Thanks to @MikeJohnson for mentoring me through the research methodology!`,
-      projects: ['Mobile App Redesign', 'User Research'],
-      tags: ['research', 'mobile', 'ux', 'interviews'],
-      createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
+      content: `Just attended the "Rethinking Stress" JUMPSTART session with Travis Dommert and wow - total game changer! 🧠💡\n\nKey takeaways that hit different as a finance intern:\n• Stress vs. Pressure: Learned that stress is our perception, not the situation itself. Those quarterly reports aren't inherently stressful - it's how I interpret the deadline pressure\n• Burnout isn't just "being tired" - it's emotional exhaustion, cynicism, and feeling ineffective. Recognizing these early warning signs is crucial\n• The "Window of Tolerance" concept - understanding when I'm in my optimal performance zone vs. when I'm overwhelmed or understimulated\n• Practical breathing techniques for those intense model-building sessions\n\nAs someone analyzing financial data all day, I never realized how much my mindset was affecting my accuracy and decision-making. Travis shared some incredible insights about reframing challenges as growth opportunities.\n\nImplementing the "pause and breathe" technique before diving into complex financial models. Already feeling more centered! 🎯\n\n#JUMPSTARTProgram #FinanceLife #MentalWellness #OneDigital`,
+      projects: ['JUMPSTART Professional Development', 'Finance Team Integration'],
+      tags: ['jumpstart', 'wellness', 'finance', 'stress-management', 'professional-development'],
+      createdAt: new Date(Date.now() - 3 * 60 * 60 * 1000), // 3 hours ago
       reactions: {
-        like: 12,
-        celebrate: 8,
-        interested: 3
+        like: 24,
+        celebrate: 18,
+        interested: 12
       },
-      commentCount: 5,
+      commentCount: 8,
       comments: [
         {
           id: 1,
-          content: 'Great insights Sarah! The navigation feedback aligns with what we\'ve been hearing from support tickets.',
+          content: 'Jordan, this is such a thoughtful reflection! The finance world can definitely be high-pressure. Love that you\'re applying these techniques to your daily work. Travis would be proud! 🙌',
           author: {
             id: 'user-2',
-            name: 'Mike Johnson',
-            avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
-            role: 'Senior Product Manager'
+            name: 'Miranda Stevens',
+            avatar: 'https://randomuser.me/api/portraits/women/30.jpg',
+            role: 'JUMPSTART Program Director'
+          },
+          createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000),
+          replies: [
+            {
+              id: 2,
+              content: 'Thank you Miranda! The session really opened my eyes. Planning to practice the breathing exercises before my budget review presentations 😊',
+              author: {
+                id: 'user-1',
+                name: 'Jordan Martinez',
+                avatar: 'https://randomuser.me/api/portraits/women/22.jpg',
+                role: 'Financial Analyst Intern'
+              },
+              createdAt: new Date(Date.now() - 1.5 * 60 * 60 * 1000)
+            }
+          ]
+        },
+        {
+          id: 3,
+          content: 'I was in that session too! The "Window of Tolerance" concept completely changed how I approach tight deadlines. Great summary Jordan! 👏',
+          author: {
+            id: 'user-8',
+            name: 'Alex Chen',
+            avatar: 'https://randomuser.me/api/portraits/men/15.jpg',
+            role: 'Marketing Intern'
+          },
+          createdAt: new Date(Date.now() - 1.8 * 60 * 60 * 1000),
+          replies: [
+            {
+              id: 4,
+              content: 'Right?! I\'ve started using it to gauge when I need to step back vs. push through. So helpful for those long Excel modeling sessions!',
+              author: {
+                id: 'user-1',
+                name: 'Jordan Martinez',
+                avatar: 'https://randomuser.me/api/portraits/women/22.jpg',
+                role: 'Financial Analyst Intern'
+              },
+              createdAt: new Date(Date.now() - 1.2 * 60 * 60 * 1000)
+            }
+          ]
+        },
+        {
+          id: 5,
+          content: 'Travis is an amazing facilitator! His sessions always leave me with practical tools I can use right away. Thanks for sharing these insights!',
+          author: {
+            id: 'user-9',
+            name: 'Sarah Kim',
+            avatar: 'https://randomuser.me/api/portraits/women/25.jpg',
+            role: 'Operations Intern'
           },
           createdAt: new Date(Date.now() - 1 * 60 * 60 * 1000),
           replies: []

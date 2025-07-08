@@ -197,8 +197,30 @@ const AgendaView = ({
                               
                               {event.location && (
                                 <div className="flex items-center space-x-2">
-                                  <Icon name="MapPin" size={16} />
-                                  <span className="truncate">{event.location}</span>
+                                  {event.isVirtual ? (
+                                    <div className="flex items-center space-x-2">
+                                      <div className="w-4 h-4 bg-blue-500 rounded flex items-center justify-center">
+                                        <span className="text-white text-xs">🎥</span>
+                                      </div>
+                                      <span className="text-blue-600 font-medium truncate">{event.location}</span>
+                                      {event.meetingLink && (
+                                        <a 
+                                          href={event.meetingLink}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="ml-2 px-2 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 text-xs rounded-lg transition-colors duration-200 font-medium"
+                                          onClick={(e) => e.stopPropagation()}
+                                        >
+                                          Join Zoom
+                                        </a>
+                                      )}
+                                    </div>
+                                  ) : (
+                                    <>
+                                      <Icon name="MapPin" size={16} />
+                                      <span className="truncate">{event.location}</span>
+                                    </>
+                                  )}
                                 </div>
                               )}
                               
