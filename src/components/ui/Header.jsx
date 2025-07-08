@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Icon from '../AppIcon';
 import Button from './Button';
+import oneDigitalLogo from '/OneDigital_Logo_4color_2022-removebg-preview.png';
 
 const Header = () => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -65,9 +66,13 @@ const Header = () => {
           {/* OneDigital Logo */}
           <Link to="/dashboard" className="flex items-center space-x-2 hover:opacity-90 transition-opacity">
             <img 
-              src="/OneDigital_Logo_4color_2022-removebg-preview.png" 
+              src={oneDigitalLogo} 
               alt="OneDigital Logo" 
               className="h-8 w-auto"
+              onError={(e) => {
+                console.error('Logo failed to load:', e.target.src);
+                e.target.style.display = 'none';
+              }}
             />
             <div className="hidden sm:block">
               <span className="text-gray-900 text-sm font-medium">Intern Connect</span>
