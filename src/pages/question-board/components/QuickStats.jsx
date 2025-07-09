@@ -15,8 +15,8 @@ const KnowledgeHubIntro = ({ onViewMyQuestions, onViewMyResponses, className = '
           </div>
           <h2 className="text-3xl font-bold mb-4">Ask Questions, Get Results</h2>
           <p className="text-xl text-white text-opacity-90 mb-6 leading-relaxed">
-            Your open space to ask questions and learn more about the insurance and employee benefits industry. 
-            Connect with OneDigital experts, share knowledge, and grow your understanding of client solutions.
+            Your open space to ask questions about anything - from OneDigital's diverse business verticals to managing workplace stress, career development, or industry insights. 
+            Connect with experts, share knowledge, and grow both personally and professionally.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm text-white text-opacity-80">
             <div className="flex items-center space-x-2">
