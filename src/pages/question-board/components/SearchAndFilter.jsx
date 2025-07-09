@@ -31,8 +31,9 @@ const SearchAndFilter = ({
   };
 
   const availableTags = [
-    'React', 'JavaScript', 'Python', 'Career', 'Internship', 
-    'Technical', 'Mentorship', 'Project', 'Learning', 'Tools'
+    'Employee Benefits', 'Insurance Solutions', 'Project Management', 'Client Relations', 
+    'Financial Analysis', 'ERISA Compliance', 'Healthcare Plans', 'Wellness Programs', 
+    'Account Management', 'Risk Management'
   ];
 
   const getActiveFilterCount = () => {

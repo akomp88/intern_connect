@@ -31,35 +31,35 @@ const QuestionBoard = () => {
     {
       id: 'general',
       name: 'General',
-      description: 'General questions and discussions',
+      description: 'General OneDigital questions and discussions',
       questionCount: 156,
       hasUnread: true
     },
     {
-      id: 'technical',
-      name: 'Technical',
-      description: 'Programming and technical questions',
+      id: 'benefits',
+      name: 'Employee Benefits',
+      description: 'Benefits consulting and HR solutions',
       questionCount: 89,
       hasUnread: false
     },
     {
-      id: 'career',
-      name: 'Career',
-      description: 'Career advice and guidance',
+      id: 'insurance',
+      name: 'Insurance',
+      description: 'Insurance products and risk management',
       questionCount: 67,
       hasUnread: true
     },
     {
       id: 'projects',
-      name: 'Projects',
-      description: 'Project-related discussions',
+      name: 'Project Management',
+      description: 'Project planning and client delivery',
       questionCount: 43,
       hasUnread: false
     },
     {
-      id: 'mentorship',
-      name: 'Mentorship',
-      description: 'Mentorship and learning',
+      id: 'finance',
+      name: 'Finance & Analytics',
+      description: 'Financial planning and data analysis',
       questionCount: 32,
       hasUnread: false
     }
@@ -68,16 +68,16 @@ const QuestionBoard = () => {
   const mockQuestions = [
     {
       id: 1,
-      title: "How do I optimize React component re-renders?",
-      content: `I'm working on a dashboard with multiple components that seem to re-render unnecessarily. I've tried using React.memo but I'm still seeing performance issues.\n\nThe components are receiving props that change frequently, and I'm not sure how to prevent the cascade of re-renders. Any suggestions on best practices?`,
+      title: "How do I best explain complex benefit packages to clients?",
+      content: `I'm working with a client who has a diverse workforce and they're struggling to understand the different benefit options available. How can I simplify the explanation while ensuring they understand the value?\n\nThey seem overwhelmed by all the healthcare plan options and retirement savings choices. Any tips for making this more digestible?`,
       author: {
         id: 'user1',
         name: 'Sarah Chen',
-        role: 'Frontend Intern',
+        role: 'Benefits Consultant Intern',
         avatar: 'https://randomuser.me/api/portraits/women/32.jpg'
       },
-      channel: 'technical',
-      tags: ['React', 'Performance', 'JavaScript'],
+      channel: 'benefits',
+      tags: ['Employee Benefits', 'Client Communication', 'Healthcare Plans'],
       timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
       votes: 12,
       userVote: null,
@@ -87,11 +87,11 @@ const QuestionBoard = () => {
       answers: [
         {
           id: 'a1',
-          content: `Try using useMemo and useCallback hooks to memoize expensive calculations and functions. Also, consider using React.memo with a custom comparison function for more control over when components should re-render.`,
+          content: `Create visual comparison charts and use real-world examples. Focus on the value proposition first, then dive into details. Also consider creating different communication materials for different employee segments.`,
           author: {
             id: 'mentor1',
             name: 'Alex Rodriguez',
-            role: 'Senior Developer',
+            role: 'Senior Benefits Consultant',
             avatar: 'https://randomuser.me/api/portraits/men/45.jpg'
           },
           timestamp: new Date(Date.now() - 1 * 60 * 60 * 1000),
@@ -102,16 +102,16 @@ const QuestionBoard = () => {
     },
     {
       id: 2,
-      title: "Best practices for internship networking?",
-      content: `I'm halfway through my internship and want to make the most of networking opportunities. What are some effective ways to connect with colleagues and build professional relationships?\n\nI'm a bit introverted, so any tips for someone who finds networking challenging would be really helpful.`,
+      title: "Best practices for client relationship management in insurance?",
+      content: `I'm working with several insurance clients and want to make sure I'm building strong, lasting relationships. What are some effective ways to maintain regular communication and add value beyond just policy administration?\n\nI'm particularly interested in how to be proactive rather than just reactive to their needs.`,
       author: {
         id: 'user2',
         name: 'Michael Johnson',
-        role: 'Marketing Intern',
+        role: 'Insurance Solutions Intern',
         avatar: 'https://randomuser.me/api/portraits/men/28.jpg'
       },
-      channel: 'career',
-      tags: ['Networking', 'Career', 'Professional Development'],
+      channel: 'insurance',
+      tags: ['Client Relations', 'Insurance', 'Account Management'],
       timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000),
       votes: 8,
       userVote: 'up',
@@ -121,9 +121,12 @@ const QuestionBoard = () => {
       answers: [
         {
           id: 'a2',
-          content: `Start with informal coffee chats! Most people are happy to share their experiences. Also, attend company events and don't be afraid to ask questions during meetings - it shows engagement.`,
+          content: `Schedule regular check-ins, send industry updates, and always come prepared with insights about their business. Anticipate their renewal periods and market changes that might affect them.`,
           author: {
-            id: 'mentor2',name: 'Jennifer Liu',role: 'Marketing Manager',avatar: 'https://randomuser.me/api/portraits/women/35.jpg'
+            id: 'mentor2',
+            name: 'Jennifer Liu',
+            role: 'Insurance Account Manager',
+            avatar: 'https://randomuser.me/api/portraits/women/35.jpg'
           },
           timestamp: new Date(Date.now() - 3 * 60 * 60 * 1000),
           likes: 12,
@@ -133,13 +136,16 @@ const QuestionBoard = () => {
     },
     {
       id: 3,
-      title: "How to handle imposter syndrome during internship?",
-      content: `I'm feeling overwhelmed and like I don't belong here. Everyone seems so much more knowledgeable than me, and I'm afraid to ask questions because I don't want to seem incompetent.\n\nHas anyone else experienced this? How did you overcome these feelings?`,
+      title: "How to effectively manage multiple client projects simultaneously?",
+      content: `I'm currently handling 4 different client implementations and struggling to keep all the timelines and deliverables organized. What project management tools and techniques work best for our industry?\n\nI don't want to drop the ball on any client, but I'm feeling overwhelmed by all the moving parts.`,
       author: {
-        id: 'user3',name: 'Emily Davis',role: 'Data Science Intern',avatar: 'https://randomuser.me/api/portraits/women/24.jpg'
+        id: 'user3',
+        name: 'Emily Davis',
+        role: 'Project Management Intern',
+        avatar: 'https://randomuser.me/api/portraits/women/24.jpg'
       },
-      channel: 'general',
-      tags: ['Mental Health', 'Career', 'Support'],
+      channel: 'projects',
+      tags: ['Project Management', 'Client Delivery', 'Time Management'],
       timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000),
       votes: 15,
       userVote: null,
@@ -150,16 +156,16 @@ const QuestionBoard = () => {
     },
     {
       id: 4,
-      title: "Git workflow best practices for team projects?",
-      content: `Our team is working on a large project and we're having issues with merge conflicts and branch management. What's the best Git workflow for a team of 6 developers?\n\nWe're currently using feature branches but running into problems when multiple people work on related features.`,
+      title: "Understanding financial reporting requirements for employee benefits",
+      content: `I'm working on a client's annual benefits report and need to understand the key financial metrics and compliance requirements. What are the most important KPIs to track?\n\nSpecifically looking for guidance on ERISA reporting and how to present cost trends to the C-suite.`,
       author: {
         id: 'user4',
         name: 'David Park',
-        role: 'Backend Intern',
+        role: 'Finance & Analytics Intern',
         avatar: 'https://randomuser.me/api/portraits/men/31.jpg'
       },
-      channel: 'technical',
-      tags: ['Git', 'Version Control', 'Team Collaboration'],
+      channel: 'finance',
+      tags: ['Financial Analysis', 'ERISA Compliance', 'Benefits Reporting'],
       timestamp: new Date(Date.now() - 8 * 60 * 60 * 1000),
       votes: 6,
       userVote: null,
@@ -170,13 +176,16 @@ const QuestionBoard = () => {
     },
     {
       id: 5,
-      title: "How to prepare for final internship presentation?",
-      content: `I need to present my project to senior leadership next week. This is my first time presenting to executives and I'm nervous about it.\n\nWhat should I focus on? How technical should I get? Any tips for handling Q&A sessions?`,
+      title: "How to present ROI of wellness programs to skeptical clients?",
+      content: `I need to present the business case for implementing a comprehensive wellness program to a client who is very cost-conscious. They're questioning the ROI and want hard data.\n\nWhat metrics and case studies work best for demonstrating the value? How do I address their concerns about employee participation rates?`,
       author: {
-        id: 'user5',name: 'Lisa Wang',role: 'Product Intern',avatar: 'https://randomuser.me/api/portraits/women/29.jpg'
+        id: 'user5',
+        name: 'Lisa Wang',
+        role: 'Benefits Consultant Intern',
+        avatar: 'https://randomuser.me/api/portraits/women/29.jpg'
       },
-      channel: 'career',
-      tags: ['Presentation', 'Leadership', 'Communication'],
+      channel: 'benefits',
+      tags: ['Wellness Programs', 'ROI Analysis', 'Client Presentations'],
       timestamp: new Date(Date.now() - 12 * 60 * 60 * 1000),
       votes: 9,
       userVote: null,
@@ -188,11 +197,11 @@ const QuestionBoard = () => {
   ];
 
   const trendingTopics = [
-    { tag: 'React', questionCount: 23, growth: 15 },
-    { tag: 'Career', questionCount: 18, growth: 8 },
-    { tag: 'JavaScript', questionCount: 16, growth: 12 },
-    { tag: 'Networking', questionCount: 14, growth: 22 },
-    { tag: 'Python', questionCount: 12, growth: 5 }
+    { tag: 'Employee Benefits', questionCount: 28, growth: 22 },
+    { tag: 'Insurance Solutions', questionCount: 24, growth: 18 },
+    { tag: 'Project Management', questionCount: 19, growth: 15 },
+    { tag: 'Client Relations', questionCount: 16, growth: 12 },
+    { tag: 'Finance & Analytics', questionCount: 14, growth: 8 }
   ];
 
   const stats = {
@@ -381,8 +390,8 @@ const QuestionBoard = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
         <Helmet>
-          <title>Question Board - Intern Connect</title>
-          <meta name="description" content="Ask questions and get answers from peers and mentors" />
+          <title>OneDigital Knowledge Hub - Intern Connect</title>
+          <meta name="description" content="Ask questions about employee benefits, insurance solutions, and project management with OneDigital experts" />
         </Helmet>
         <Header />
         <TabNavigation />
@@ -399,10 +408,10 @@ const QuestionBoard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      <Helmet>
-        <title>Question Board - Intern Connect</title>
-        <meta name="description" content="Ask questions and get answers from peers and mentors in your internship program" />
-      </Helmet>
+              <Helmet>
+          <title>OneDigital Knowledge Hub - Intern Connect</title>
+          <meta name="description" content="Ask questions about employee benefits, insurance solutions, and project management with OneDigital experts and interns" />
+        </Helmet>
       
       <Header />
       <TabNavigation />
@@ -412,9 +421,9 @@ const QuestionBoard = () => {
         <div className="mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold text-text-primary">Question Board</h1>
+              <h1 className="text-2xl font-bold text-text-primary">OneDigital Knowledge Hub</h1>
               <p className="text-text-secondary mt-1">
-                Ask questions, share knowledge, and learn from your peers
+                Ask questions about benefits, insurance, and project management with OneDigital experts
               </p>
             </div>
             

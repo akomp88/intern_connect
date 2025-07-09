@@ -4,11 +4,9 @@ import TabNavigation from '../../components/ui/TabNavigation';
 import Footer from '../../components/ui/Footer';
 import FilterSidebar from '../../components/ui/FilterSidebar';
 import ProfileModal from '../../components/ui/ProfileModal';
-import DirectoryTable from './components/DirectoryTable';
 import DirectoryCards from './components/DirectoryCards';
 import SearchBar from './components/SearchBar';
 import FilterChips from './components/FilterChips';
-import ViewToggle from './components/ViewToggle';
 import ResultsHeader from './components/ResultsHeader';
 import Pagination from './components/Pagination';
 import Icon from '../../components/AppIcon';
@@ -17,7 +15,7 @@ import Button from '../../components/ui/Button';
 const ConnectionHub = () => {
   // State management
   const [searchTerm, setSearchTerm] = useState('');
-  const [currentView, setCurrentView] = useState('table');
+  const [currentView, setCurrentView] = useState('cards');
   const [isFilterSidebarOpen, setIsFilterSidebarOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -428,9 +426,7 @@ const ConnectionHub = () => {
     setIsProfileModalOpen(true);
   };
 
-  const handleViewChange = (view) => {
-    setCurrentView(view);
-  };
+
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -485,12 +481,7 @@ const ConnectionHub = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Auto-switch to cards view on mobile
-  useEffect(() => {
-    if (isMobile && currentView === 'table') {
-      setCurrentView('cards');
-    }
-  }, [isMobile, currentView]);
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
@@ -550,12 +541,7 @@ const ConnectionHub = () => {
                   Filters
                 </Button>
                 
-                {!isMobile && (
-                  <ViewToggle
-                    currentView={currentView}
-                    onViewChange={handleViewChange}
-                  />
-                )}
+
               </div>
             </div>
 
@@ -593,23 +579,12 @@ const ConnectionHub = () => {
 
           {/* Directory Content */}
           <div className="mb-6">
-            {currentView === 'table' && !isMobile ? (
-              <DirectoryTable
-                users={paginatedUsers}
-                onUserClick={handleUserClick}
-                onEmail={handleEmail}
-                sortConfig={sortConfig}
-                onSort={handleSort}
-                searchTerm={searchTerm}
-              />
-            ) : (
-              <DirectoryCards
-                users={paginatedUsers}
-                onUserClick={handleUserClick}
-                onEmail={handleEmail}
-                searchTerm={searchTerm}
-              />
-            )}
+            <DirectoryCards
+              users={paginatedUsers}
+              onUserClick={handleUserClick}
+              onEmail={handleEmail}
+              searchTerm={searchTerm}
+            />
           </div>
 
           {/* Pagination */}

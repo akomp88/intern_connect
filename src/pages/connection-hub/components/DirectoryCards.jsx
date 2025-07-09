@@ -242,7 +242,7 @@ const DirectoryCards = ({
               iconName="MessageCircle"
               iconPosition="left"
             >
-              Message
+              Teams Message
             </Button>
             
             {user.email ? (
