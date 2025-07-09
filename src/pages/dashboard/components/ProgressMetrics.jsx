@@ -38,9 +38,9 @@ const ProgressMetrics = ({ metrics }) => {
       color: 'accent'
     },
     {
-      label: 'Mentor Meetings',
+      label: 'Coffee Chats',
       value: data.mentorMeetings,
-      icon: 'Users',
+      icon: 'Coffee',
       color: 'success'
     }
   ];

@@ -272,9 +272,9 @@ const Dashboard = () => {
                   onClick={() => handleQuickAction('view-archive')}
                 />
                 <QuickActionCard
-                  title="Mentor Meetings"
-                  description="Schedule and manage your mentorship sessions"
-                  icon="Users"
+                  title="Intern Coffee Chats"
+                  description="A weekly 30 minute meeting with another intern on your schedule"
+                  icon="Coffee"
                   variant="accent"
                   onClick={() => handleQuickAction('mentor-meetings')}
                 />
