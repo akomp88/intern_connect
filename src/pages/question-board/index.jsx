@@ -193,6 +193,46 @@ const QuestionBoard = () => {
       views: 56,
       isResolved: true,
       answers: []
+    },
+    {
+      id: 6,
+      title: "How to balance work-life as an intern at OneDigital?",
+      content: `I'm starting my internship at OneDigital soon and want to make sure I maintain a healthy work-life balance. What are some strategies that have worked for other interns?\n\nI'm excited about the opportunity but also want to make sure I don't burn out during the program.`,
+      author: {
+        id: 'user6',
+        name: 'Alex Chen',
+        role: 'Project Management Intern',
+        avatar: 'https://randomuser.me/api/portraits/men/15.jpg'
+      },
+      channel: 'general',
+      tags: ['Work-Life Balance', 'Internship Tips', 'Wellness'],
+      timestamp: new Date(Date.now() - 18 * 60 * 60 * 1000),
+      votes: 7,
+      userVote: null,
+      answerCount: 3,
+      views: 42,
+      isResolved: false,
+      answers: []
+    },
+    {
+      id: 7,
+      title: "What should I expect in my first week at OneDigital?",
+      content: `I'm nervous about starting my internship next week. Can anyone share what the onboarding process is like and what I should prepare for?\n\nAny tips for making a good first impression would be really appreciated!`,
+      author: {
+        id: 'user7',
+        name: 'Taylor Martinez',
+        role: 'Benefits Consultant Intern',
+        avatar: 'https://randomuser.me/api/portraits/women/18.jpg'
+      },
+      channel: 'general',
+      tags: ['Onboarding', 'First Day', 'Internship Tips'],
+      timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000),
+      votes: 11,
+      userVote: null,
+      answerCount: 6,
+      views: 78,
+      isResolved: true,
+      answers: []
     }
   ];
 
@@ -453,43 +493,7 @@ const QuestionBoard = () => {
           className="mb-8" 
         />
 
-        {/* Industry Learning Guide */}
-        <div className="bg-surface border border-border rounded-xl p-6 mb-8 shadow-elevation-1">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center justify-center mb-4">
-              <div className="flex items-center space-x-3">
-                <Icon name="GraduationCap" size={24} className="text-primary" />
-                <h3 className="text-xl font-semibold text-text-primary">Learn About Our Industries</h3>
-              </div>
-            </div>
-            <p className="text-center text-text-secondary mb-6 leading-relaxed">
-              Explore questions and insights across OneDigital's core service areas. Whether you're curious about employee benefits design, 
-              insurance risk management, client project delivery, or financial compliance, this is your space to learn from industry experts.
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-              <div className="flex flex-col items-center p-3 bg-primary-50 rounded-lg border border-primary-200">
-                <Icon name="Heart" size={20} className="text-primary mb-2" />
-                <span className="text-sm font-medium text-primary">Employee Benefits</span>
-              </div>
-              <div className="flex flex-col items-center p-3 bg-secondary-50 rounded-lg border border-secondary-200">
-                <Icon name="Shield" size={20} className="text-secondary mb-2" />
-                <span className="text-sm font-medium text-secondary">Insurance</span>
-              </div>
-              <div className="flex flex-col items-center p-3 bg-accent-50 rounded-lg border border-accent-200">
-                <Icon name="Briefcase" size={20} className="text-accent mb-2" />
-                <span className="text-sm font-medium text-accent">Project Management</span>
-              </div>
-              <div className="flex flex-col items-center p-3 bg-success-50 rounded-lg border border-success-200">
-                <Icon name="Users" size={20} className="text-success mb-2" />
-                <span className="text-sm font-medium text-success">Client Relations</span>
-              </div>
-              <div className="flex flex-col items-center p-3 bg-warning-50 rounded-lg border border-warning-200">
-                <Icon name="Calculator" size={20} className="text-warning mb-2" />
-                <span className="text-sm font-medium text-warning">Finance & Analytics</span>
-              </div>
-            </div>
-          </div>
-        </div>
+
 
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
