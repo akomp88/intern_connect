@@ -116,7 +116,7 @@ const ActivityFeed = () => {
       author: {
         id: 'user-3',
         name: 'Alex Rodriguez',
-        role: 'Software Engineering Intern',
+        role: 'Project Management Intern',
         team: 'Engineering',
         office: 'Austin',
         avatar: 'https://randomuser.me/api/portraits/men/3.jpg'

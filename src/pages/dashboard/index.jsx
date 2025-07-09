@@ -123,7 +123,7 @@ const Dashboard = () => {
         id: Date.now(),
         author: {
           name: 'John Doe',
-          title: 'Software Engineering Intern',
+          title: 'Project Management Intern',
           department: 'Engineering',
           avatar: null
         },
@@ -236,7 +236,7 @@ const Dashboard = () => {
                     <div className="flex flex-wrap gap-4 text-sm text-white text-opacity-80">
                       <div className="flex items-center space-x-2">
                         <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                        <span>Software Engineering Intern</span>
+                        <span>Project Management Intern</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
@@ -272,7 +272,7 @@ const Dashboard = () => {
                   onClick={() => handleQuickAction('view-archive')}
                 />
                 <QuickActionCard
-                  title="Intern Coffee Chats"
+                  title="Intern Coffee Chat"
                   description="A weekly 30 minute meeting with another intern on your schedule"
                   icon="Coffee"
                   variant="accent"

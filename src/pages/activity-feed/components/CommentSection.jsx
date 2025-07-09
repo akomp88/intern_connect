@@ -20,7 +20,7 @@ const CommentSection = ({ activityId, comments, onComment }) => {
         id: 'current-user',
         name: 'John Doe',
         avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
-        role: 'Software Engineering Intern'
+        role: 'Project Management Intern'
       },
       createdAt: new Date(),
       replies: []
@@ -44,7 +44,7 @@ const CommentSection = ({ activityId, comments, onComment }) => {
         id: 'current-user',
         name: 'John Doe',
         avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
-        role: 'Software Engineering Intern'
+        role: 'Project Management Intern'
       },
       createdAt: new Date(),
       parentId: parentCommentId

@@ -328,7 +328,7 @@ const QuestionBoard = () => {
       author: {
         id: 'current-user',
         name: 'John Doe',
-        role: 'Software Engineering Intern',
+        role: 'Project Management Intern',
         avatar: null
       },
       timestamp: new Date(),
@@ -355,7 +355,7 @@ const QuestionBoard = () => {
       author: {
         id: 'current-user',
         name: 'John Doe',
-        role: 'Software Engineering Intern',
+        role: 'Project Management Intern',
         avatar: null
       },
       timestamp: new Date(),
