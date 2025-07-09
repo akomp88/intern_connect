@@ -209,8 +209,8 @@ const ConnectionHub = () => {
     {
       id: 10,
       name: "Carlos Hernandez",
-      title: "Senior Financial Planner",
-      role: "Financial Planner",
+      title: "Senior Financial Planner & Mentor",
+      role: "Mentor",
       department: "Financial Services",
       office: "OneDigital HQ",
       email: "carlos.hernandez@onedigital.com",
@@ -219,9 +219,9 @@ const ConnectionHub = () => {
       isFormerIntern: true,
       joinDate: "2019-02-18",
       location: "Atlanta, GA",
-      bio: "Senior financial planner specializing in executive compensation and retirement planning. Former JUMPSTART intern who now mentors current interns in financial analysis and client relationship management.",
-      skills: ["Executive Compensation", "Estate Planning", "Tax Strategy", "Wealth Management", "Client Advisory"],
-      interests: ["Financial Education", "Wealth Strategies", "Mentoring"],
+      bio: "Senior financial planner and dedicated mentor specializing in executive compensation and retirement planning. Former JUMPSTART intern who now leads our intern mentorship program and guides current interns in financial analysis and client relationship management.",
+      skills: ["Executive Compensation", "Estate Planning", "Tax Strategy", "Wealth Management", "Client Advisory", "Mentorship"],
+      interests: ["Financial Education", "Wealth Strategies", "Mentoring", "Intern Development"],
       connectionStatus: "connected",
       linkedinUrl: "https://linkedin.com/in/carloshernandez"
     },
