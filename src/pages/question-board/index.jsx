@@ -9,7 +9,7 @@ import QuestionCard from './components/QuestionCard';
 import SearchAndFilter from './components/SearchAndFilter';
 import NewQuestionModal from './components/NewQuestionModal';
 import TrendingTopics from './components/TrendingTopics';
-import QuickStats from './components/QuickStats';
+import KnowledgeHubIntro from './components/QuickStats';
 
 const QuestionBoard = () => {
   const [selectedChannel, setSelectedChannel] = useState(null);
@@ -204,12 +204,7 @@ const QuestionBoard = () => {
     { tag: 'Finance & Analytics', questionCount: 14, growth: 8 }
   ];
 
-  const stats = {
-    totalQuestions: 312,
-    answeredToday: 18,
-    activeUsers: 89,
-    avgResponseTime: '2.4h'
-  };
+
 
   useEffect(() => {
     // Set default channel
@@ -386,6 +381,18 @@ const QuestionBoard = () => {
     }));
   };
 
+  const handleViewMyQuestions = () => {
+    // Filter to show only current user's questions
+    console.log('View my questions');
+    // Implementation: filter questions by current user
+  };
+
+  const handleViewMyResponses = () => {
+    // Filter to show questions current user has answered
+    console.log('View my responses');
+    // Implementation: filter questions where current user has provided answers
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -439,8 +446,50 @@ const QuestionBoard = () => {
           </div>
         </div>
 
-        {/* Quick Stats */}
-        <QuickStats stats={stats} className="mb-6" />
+        {/* Knowledge Hub Introduction */}
+        <KnowledgeHubIntro 
+          onViewMyQuestions={handleViewMyQuestions}
+          onViewMyResponses={handleViewMyResponses}
+          className="mb-8" 
+        />
+
+        {/* Industry Learning Guide */}
+        <div className="bg-surface border border-border rounded-xl p-6 mb-8 shadow-elevation-1">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center justify-center mb-4">
+              <div className="flex items-center space-x-3">
+                <Icon name="GraduationCap" size={24} className="text-primary" />
+                <h3 className="text-xl font-semibold text-text-primary">Learn About Our Industries</h3>
+              </div>
+            </div>
+            <p className="text-center text-text-secondary mb-6 leading-relaxed">
+              Explore questions and insights across OneDigital's core service areas. Whether you're curious about employee benefits design, 
+              insurance risk management, client project delivery, or financial compliance, this is your space to learn from industry experts.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              <div className="flex flex-col items-center p-3 bg-primary-50 rounded-lg border border-primary-200">
+                <Icon name="Heart" size={20} className="text-primary mb-2" />
+                <span className="text-sm font-medium text-primary">Employee Benefits</span>
+              </div>
+              <div className="flex flex-col items-center p-3 bg-secondary-50 rounded-lg border border-secondary-200">
+                <Icon name="Shield" size={20} className="text-secondary mb-2" />
+                <span className="text-sm font-medium text-secondary">Insurance</span>
+              </div>
+              <div className="flex flex-col items-center p-3 bg-accent-50 rounded-lg border border-accent-200">
+                <Icon name="Briefcase" size={20} className="text-accent mb-2" />
+                <span className="text-sm font-medium text-accent">Project Management</span>
+              </div>
+              <div className="flex flex-col items-center p-3 bg-success-50 rounded-lg border border-success-200">
+                <Icon name="Users" size={20} className="text-success mb-2" />
+                <span className="text-sm font-medium text-success">Client Relations</span>
+              </div>
+              <div className="flex flex-col items-center p-3 bg-warning-50 rounded-lg border border-warning-200">
+                <Icon name="Calculator" size={20} className="text-warning mb-2" />
+                <span className="text-sm font-medium text-warning">Finance & Analytics</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
